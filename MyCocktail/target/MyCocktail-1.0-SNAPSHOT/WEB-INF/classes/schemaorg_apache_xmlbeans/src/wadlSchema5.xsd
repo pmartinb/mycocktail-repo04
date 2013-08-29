@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+          attributeFormDefault="unqualified"
+          elementFormDefault="qualified"
+          version="1.0"
+          xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:mk="http://research.sun.com/wadl/2006/10"
+          targetNamespace="http://research.sun.com/wadl/2006/10">
+  <xs:element name="application" type="mk:application" />
+  
+  <xs:complexType name="application">
+    <xs:sequence>
+      <xs:element name="resources" type="mk:resources" />
+    </xs:sequence>
+    <xs:attribute name="schemaLocation" type="xs:string" />
+  </xs:complexType>
+  
+  <xs:complexType name="resources">
+    <xs:sequence>
+      <xs:element name="resource" type="mk:resource" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="base" type="xs:string" />
+  </xs:complexType>
+  
+  <xs:complexType name="resource">
+    <xs:sequence>
+      <xs:element name="param" type="mk:param" minOccurs="0" maxOccurs="unbounded" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="method" type="mk:method" />
+        <xs:element name="resource" type="mk:resource" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="path" type="xs:string" />
+  </xs:complexType>
+  
+  <xs:complexType name="method">
+    <xs:sequence>
+      <xs:element name="request" type="mk:request" />
+      <xs:element name="response" type="mk:response" />
+    </xs:sequence>
+    <xs:attribute name="name" type="mk:Method" />
+    <xs:attribute name="id" type="xs:string" />
+  </xs:complexType>
+  
+  <xs:simpleType name="Method">
+    <xs:union memberTypes="mk:HTTPMethods xs:NMTOKEN"/>
+  </xs:simpleType>
+  
+  <xs:simpleType name="HTTPMethods">
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="GET"/>
+      <xs:enumeration value="POST"/>
+      <xs:enumeration value="PUT"/>
+      <xs:enumeration value="HEAD"/>
+      <xs:enumeration value="DELETE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="response">
+    <xs:sequence>
+      <xs:element name="representation" type="mk:representation" />
+      <xs:element name="fault" type="mk:fault" />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="fault">
+    <xs:attribute name="status" type="xs:int" />
+    <xs:attribute name="mediaType" type="xs:string" />
+  </xs:complexType>
+  
+  <xs:complexType name="representation">
+    <xs:attribute name="mediaType" type="xs:string" />
+  </xs:complexType>
+  
+  <xs:complexType name="request">
+    <xs:sequence>
+      <xs:element name="param" type="mk:param" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:simpleType name="ParamStyle">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="query"/>
+      <xs:enumeration value="template"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="param">
+    <xs:sequence>
+      <xs:element name="option" type="mk:option" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="type" type="xs:string" use="required"/>
+    <xs:attribute name="style" type="mk:ParamStyle" />
+    <xs:attribute name="required" type="xs:boolean" default="false"/>
+    <xs:attribute name="fixed" type="xs:string"/>
+    <xs:attribute name="default" type="xs:string"/>
+  </xs:complexType>
+  
+  <xs:complexType name="option">
+    <xs:attribute name="value" type="xs:string" />
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="MyCocktail Roma Framework Module" default="generate-roma-module" basedir=".">   
+    <target name="generate-roma-module" depends="compile, compress" description="Generate a WAR with the project">
+        <property name="roma.mycocktail.folder"      value="romaframework" />
+        <property name="roma.mycocktail.project.web" value="${roma.mycocktail.folder}/module" />
+        <property name="roma.mycocktail.src"         value="${roma.mycocktail.folder}/src/java"/>
+        <property name="roma.mycocktail.name"        value="mashup-mycocktail" />
+        <property name="roma.mycocktail.dist"        value="${distfolder}/${roma.mycocktail.name}" />
+        
+        <path id="roma.mycocktail.classpath">
+            <fileset dir="${roma.mycocktail.folder}/lib" includes="**/*.jar" />
+        </path>
+        
+        <echo>Generating MyCocktail Roma Module</echo>
+        <echo>=================================</echo>
+        <echo>Generating roma module folder: ${roma.mycocktail.dist}</echo>
+        <mkdir dir="${roma.mycocktail.dist}" />
+        <echo>Copying build.xml...</echo>
+        <copy todir="${roma.mycocktail.dist}" file="${roma.mycocktail.project.web}/build.xml" />
+        <echo>Copying roma-module.xml...</echo>
+        <copy todir="${roma.mycocktail.dist}" file="${roma.mycocktail.project.web}/roma-module.xml" />
+        <echo>Generating folder lib...</echo>
+        <mkdir dir="${roma.mycocktail.dist}/lib" />
+        <copy todir="${roma.mycocktail.dist}/lib">
+            <fileset dir="${project.dist}/WEB-INF/lib/"/>
+        </copy>
+    <!-- Hacer JAR de clases de mycocktail -->
+        <echo>Generating folder scaffolding...</echo>
+        <mkdir dir="${roma.mycocktail.dist}/scaffolding" />
+        <mkdir dir="${roma.mycocktail.dist}/scaffolding/WebContent" />
+        <mkdir dir="${roma.mycocktail.dist}/scaffolding/WebContent/MyCocktail" />
+        <copy todir="${roma.mycocktail.dist}/scaffolding/WebContent/MyCocktail">
+            <fileset dir="${project.dist}">
+                <exclude name="WEB-INF/**"/>
+                <exclude name="META-INF/**"/>
+            </fileset>
+        </copy>
+        <echo file="${roma.mycocktail.dist}/scaffolding/WebContent/MyCocktail/js/afrous/afrous-stdlib-index.js" append="true">
+<![CDATA[
+//Intetgration of Roma Services automatically
+(function() {
+var p = afrous.packages;
+
+/*************** WADL REGISTRY SERVER CONFIGURATION ***********************/
+var href = null;
+var scriptArray = document.getElementsByTagName('script');
+for(var i=0; i<scriptArray.length; i++) {
+    var src = scriptArray[i].src;
+    if(src != undefined && src != null && src.indexOf('afrous-config.js') != -1) {
+        href = src.split("/MyCocktail")[0];
+        break;
+    }
+}
+
+var ROMA_REGISTRY_URL = href + "/services/Registry/WADLRegistry/wadlUrls";
+/*************** WADL REGISTRY SERVER CONFIGURATION ***********************/
+
+afrous.ajax.jsonp.invoke(ROMA_REGISTRY_URL, function(json) {
+  var counter = 1;
+  afrous.lang.forEach(json.wadls, function(wadlUrl){
+    p.loadScript(afrous.baseURL+'/ServiceCreator?wadl='+wadlUrl+'&serviceName=roma'+(counter++)+'&category=Roma-Services');
+  });
+});
+})();
+]]>
+        </echo>
+        <echo file="${roma.mycocktail.dist}/scaffolding/WebContent/MyCocktail/js/afrous/afrous-config.js" append="false">
+<![CDATA[
+var afrous;if (!afrous) afrous = {};(function() {afrous.packages = {};
+
+/*************** SERVER CONFIGURATION ***********************/
+var href = null;
+var scriptArray = document.getElementsByTagName('script');
+for(var i=0; i<scriptArray.length; i++) {
+    var src = scriptArray[i].src;
+    if(src != undefined && src != null && src.indexOf('afrous-config.js') != -1) {
+        href = src.split("/MyCocktail")[0];
+        break;
+    }
+}
+afrous.baseURL = href + "/MyCocktail"
+afrous.packages.scriptBaseURL = afrous.baseURL+"/js/afrous";
+/*************** SERVER CONFIGURATION ***********************/
+
+})();
+]]>
+        </echo>
+        <echo>Generating folder wizard...</echo>
+        <mkdir dir="${roma.mycocktail.dist}/wizard" />
+        <echo>Copying the wizard.xml file...</echo>
+        <copy todir="${roma.mycocktail.dist}/wizard" file="${roma.mycocktail.project.web}/wizard/wizard.xml" />
+        <copy todir="${roma.mycocktail.dist}/wizard" file="${roma.mycocktail.project.web}/wizard/servlets.xml" />
+        <copy todir="${roma.mycocktail.dist}/wizard" file="${roma.mycocktail.project.web}/wizard/mappings.xml" />
+        <taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask">
+            <classpath>
+                <pathelement path="${ant.lib}/xmltask-v1.15.1.jar" />
+                <pathelement path="${ant.lib}/xalan-2.7.1.jar" />
+            </classpath>
+        </taskdef>
+        <xmltask source="${distfolder}/${ant.project.name}/WEB-INF/web.xml">
+            <copy path="/web-app/servlet"         buffer="servlets" append="true" />
+            <copy path="/web-app/servlet-mapping" buffer="mappings" append="true" />
+        </xmltask>
+        <xmltask source="${roma.mycocktail.dist}/wizard/servlets.xml" dest="${roma.mycocktail.dist}/wizard/servlets.xml">
+            <insert path="/servlets" buffer="servlets" />
+        </xmltask>
+        <xmltask source="${roma.mycocktail.dist}/wizard/mappings.xml" dest="${roma.mycocktail.dist}/wizard/mappings.xml">
+            <insert path="/mappings" buffer="mappings" />
+        </xmltask>
+        <xmltask source="${roma.mycocktail.dist}/wizard/mappings.xml" dest="${roma.mycocktail.dist}/wizard/mappings.xml">
+            <insert path="/mappings/servlet-mapping/url-pattern/text()" position="before">/MyCocktail</insert>
+        </xmltask>
+        <echo>Generating build folder...</echo>
+        <copy todir="${roma.mycocktail.dist}/build">
+            <fileset dir="${project.dist}/WEB-INF/classes" />
+        </copy>
+        <echo>Compiling MyCocktail sources for Roma Framework...</echo>
+        <javac destdir="${roma.mycocktail.dist}/build">
+            <src path="${roma.mycocktail.src}" />
+            <classpath refid="project.classpath" />
+            <classpath refid="roma.mycocktail.classpath" />
+        </javac>
+        <copy todir="${roma.mycocktail.dist}/build/conf" overwrite="true">
+            <fileset dir="${roma.mycocktail.src}/conf" />
+        </copy>
+        <jar destfile="${roma.mycocktail.dist}/lib/mycocktail.jar"
+         basedir="${roma.mycocktail.dist}/build">
+            <manifest>
+                <attribute name="Title" value="MyCocktail, Romulus Mashup Builder"/>
+                <attribute name="Author" value="Informática Gesfor"/>
+            </manifest>
+        </jar>
+        <delete dir="${roma.mycocktail.dist}/build" />
+    </target>
+</project>

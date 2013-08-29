@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svnroot/mycocktail/!svn/ver/260/trunk/MyCocktail/lib
+END
+servlet-api.jar
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnroot/mycocktail/!svn/ver/96/trunk/MyCocktail/lib/servlet-api.jar
+END
+hsqldb.jar
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/mycocktail/!svn/ver/3/trunk/MyCocktail/lib/hsqldb.jar
+END

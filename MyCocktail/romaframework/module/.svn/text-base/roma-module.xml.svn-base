@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties PUBLIC "JAVA PROPERTIES" "http://www.romaframework.org/schema/properties.dtd">
+<properties>
+	<comment>MyCocktail Module - This module allows to build mashup from the services of a Roma Application</comment>
+	<entry key="name">MyCocktail</entry>
+	<entry key="version">2.0.1</entry>
+	<entry key="repository">ict-romulus</entry>
+</properties>

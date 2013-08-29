@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="compile" name="mycocktail">
+    <property name="project.path" value="../.." />
+    <property name="project.version" value="2.0" />
+    <property name="project.category" value="modules" />
+    <property name="project.depends.jar" value="roma-core.jar" />
+    <property name="project.depends.prj" value="modules/core" />
+
+    <import file="${project.path}/common/default-build.xml" />
+
+    <path id="project.classpath">
+        <fileset dir="${global.dist}/modules/persistence-datanucleus/lib" includes="**/*.jar" />
+    </path>
+
+    <target name="clean">
+        <delete dir="${project.build}" />
+    </target>
+
+    <target name="compile">
+        <antcall target="generic-ant.compile" />
+        <taskdef classname="org.datanucleus.enhancer.tools.EnhancerTask" classpathref="project.classpath" name="datanucleusenhancer" />
+        <datanucleusenhancer classpathref="project.classpath" dir="build" failonerror="true" verbose="true" />
+    </target>
+</project>
