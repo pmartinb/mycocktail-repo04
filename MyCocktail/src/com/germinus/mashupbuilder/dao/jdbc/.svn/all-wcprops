@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/mycocktail/!svn/ver/228/trunk/MyCocktail/src/java/com/germinus/mashupbuilder/dao/jdbc
+END
+PageDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svnroot/mycocktail/!svn/ver/188/trunk/MyCocktail/src/java/com/germinus/mashupbuilder/dao/jdbc/PageDAO.java
+END
+MashupDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svnroot/mycocktail/!svn/ver/188/trunk/MyCocktail/src/java/com/germinus/mashupbuilder/dao/jdbc/MashupDAO.java
+END
+PageJDBCDAOImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svnroot/mycocktail/!svn/ver/228/trunk/MyCocktail/src/java/com/germinus/mashupbuilder/dao/jdbc/PageJDBCDAOImpl.java
+END
+MashupJDBCDAOImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svnroot/mycocktail/!svn/ver/228/trunk/MyCocktail/src/java/com/germinus/mashupbuilder/dao/jdbc/MashupJDBCDAOImpl.java
+END

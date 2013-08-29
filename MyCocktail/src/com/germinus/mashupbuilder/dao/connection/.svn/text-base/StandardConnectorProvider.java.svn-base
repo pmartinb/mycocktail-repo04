@@ -1,0 +1,84 @@
+/*
+ * Copyright 2009 David del Pozo González (dpozog--at--grupogesfor.com)
+ * Informática Gesfor
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.germinus.mashupbuilder.dao.connection;
+
+import com.germinus.mashupbuilder.dao.DAOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Properties;
+import java.util.logging.Logger;
+import java.util.logging.Level;
+import java.io.IOException;
+
+/**
+ * This class is a connection provider, this provider generates the connection
+ * with the data provided in "conf/db.properties" file .
+ * @author David del Pozo González
+ */
+public class StandardConnectorProvider implements ConnectorProvider {
+    /**
+     * The path to the database configuration file.
+     */
+    private static final String PROPERTIES_PATH = "conf/db.properties";
+    /**
+     * The properties file with the information about the connector provider.
+     */
+    private static Properties dbProperties = null;
+
+    /**
+     * Load the propertis from configuration file.
+     */
+    private void loadProperties() {
+        try {
+            dbProperties = new Properties();
+            dbProperties.load(
+                StandardConnectorProvider.class.getClassLoader()
+                .getResourceAsStream(PROPERTIES_PATH));
+        } catch (IOException ex) {
+            Logger.getLogger(StandardConnectorProvider.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Retrieves a database connection configured in "conf/db.properties" file.
+     * @return a database connection.
+     * @throws com.germinus.mashupbuilder.dao.DAOException if an database error
+     * occurs.
+     */
+    public final Connection getConnection() throws DAOException {
+        if (dbProperties == null) {
+            loadProperties();
+        }
+
+        String driver = dbProperties.getProperty("driver");
+        String url    = dbProperties.getProperty("url");
+        String user   = dbProperties.getProperty("user");
+        String passwd = dbProperties.getProperty("password");
+
+        Connection con = null;
+        try {
+            Class.forName(driver);
+            con = DriverManager.getConnection(url, user, passwd);
+        } catch (ClassNotFoundException ex) {
+            throw new DAOException("The JDBC Driver is not found", ex);
+        } catch (SQLException ex) {
+            throw new DAOException(ex);
+        }
+        return con;
+    }
+}
