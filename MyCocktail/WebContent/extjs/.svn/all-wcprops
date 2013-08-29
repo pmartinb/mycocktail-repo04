@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnroot/mycocktail/!svn/ver/78/trunk/MyCocktail/web/extjs
+END
+LICENSE.txt
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/mycocktail/!svn/ver/2/trunk/MyCocktail/web/extjs/LICENSE.txt
+END
+ext-all.js
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnroot/mycocktail/!svn/ver/2/trunk/MyCocktail/web/extjs/ext-all.js
+END
+ext-core.js
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/mycocktail/!svn/ver/2/trunk/MyCocktail/web/extjs/ext-core.js
+END
+CHANGE_LOG.txt
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svnroot/mycocktail/!svn/ver/2/trunk/MyCocktail/web/extjs/CHANGE_LOG.txt
+END
+ext-all-debug.js
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svnroot/mycocktail/!svn/ver/2/trunk/MyCocktail/web/extjs/ext-all-debug.js
+END
+ext-core-debug.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnroot/mycocktail/!svn/ver/2/trunk/MyCocktail/web/extjs/ext-core-debug.js
+END
+INCLUDE_ORDER.txt
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnroot/mycocktail/!svn/ver/2/trunk/MyCocktail/web/extjs/INCLUDE_ORDER.txt
+END

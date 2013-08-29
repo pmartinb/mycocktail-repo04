@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/MyCocktail">
+<beans profile="default">
+        <bean id="mycocktail" class="org.apache.commons.dbcp.BasicDataSource"
+            destroy-method="close">
+            <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+            <property name="url" value="jdbc:mysql://localhost/mycocktail:3306/" />
+            <property name="username" value="mycocktail" />
+            <property name="password" value="3d2jc7e3e2kj4e1" />
+        </bean>
+    </beans>
+
+    <beans profile="cloud">
+        <cloud:data-source id="mycocktail"/>
+    </beans>
+
+</Context>

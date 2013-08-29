@@ -1,0 +1,149 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/mycocktail/!svn/ver/263/trunk/MyCocktail/web/WEB-INF/lib
+END
+jersey-core-1.11.jar
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svnroot/mycocktail/!svn/ver/263/trunk/MyCocktail/web/WEB-INF/lib/jersey-core-1.11.jar
+END
+sparqlresult-xmlbeans.jar
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svnroot/mycocktail/!svn/ver/263/trunk/MyCocktail/web/WEB-INF/lib/sparqlresult-xmlbeans.jar
+END
+json.jar
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svnroot/mycocktail/!svn/ver/54/trunk/MyCocktail/web/WEB-INF/lib/json.jar
+END
+js.jar
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svnroot/mycocktail/!svn/ver/231/trunk/MyCocktail/web/WEB-INF/lib/js.jar
+END
+hsqldb.jar
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svnroot/mycocktail/!svn/ver/2/trunk/MyCocktail/web/WEB-INF/lib/hsqldb.jar
+END
+axiom.jar
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnroot/mycocktail/!svn/ver/157/trunk/MyCocktail/web/WEB-INF/lib/axiom.jar
+END
+commons-io-1.4.jar
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svnroot/mycocktail/!svn/ver/2/trunk/MyCocktail/web/WEB-INF/lib/commons-io-1.4.jar
+END
+ezmorph-1.0.6.jar
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/mycocktail/!svn/ver/157/trunk/MyCocktail/web/WEB-INF/lib/ezmorph-1.0.6.jar
+END
+commons-codec-1.3.jar
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svnroot/mycocktail/!svn/ver/157/trunk/MyCocktail/web/WEB-INF/lib/commons-codec-1.3.jar
+END
+commons-httpclient-3.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svnroot/mycocktail/!svn/ver/157/trunk/MyCocktail/web/WEB-INF/lib/commons-httpclient-3.1.jar
+END
+commons-collections-3.2.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svnroot/mycocktail/!svn/ver/157/trunk/MyCocktail/web/WEB-INF/lib/commons-collections-3.2.1.jar
+END
+jsr311-api-1.0.jar
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svnroot/mycocktail/!svn/ver/147/trunk/MyCocktail/web/WEB-INF/lib/jsr311-api-1.0.jar
+END
+flexjson.jar
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svnroot/mycocktail/!svn/ver/110/trunk/MyCocktail/web/WEB-INF/lib/flexjson.jar
+END
+json-lib-2.2.3-jdk15.jar
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svnroot/mycocktail/!svn/ver/157/trunk/MyCocktail/web/WEB-INF/lib/json-lib-2.2.3-jdk15.jar
+END
+commons-fileupload-1.2.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svnroot/mycocktail/!svn/ver/2/trunk/MyCocktail/web/WEB-INF/lib/commons-fileupload-1.2.1.jar
+END
+jersey-client-1.11.jar
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svnroot/mycocktail/!svn/ver/263/trunk/MyCocktail/web/WEB-INF/lib/jersey-client-1.11.jar
+END
+commons-logging-1.1.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svnroot/mycocktail/!svn/ver/211/trunk/MyCocktail/web/WEB-INF/lib/commons-logging-1.1.1.jar
+END
+commons-lang-2.4.jar
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svnroot/mycocktail/!svn/ver/157/trunk/MyCocktail/web/WEB-INF/lib/commons-lang-2.4.jar
+END
+abdera-0.4.0-incubating.jar
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svnroot/mycocktail/!svn/ver/157/trunk/MyCocktail/web/WEB-INF/lib/abdera-0.4.0-incubating.jar
+END
+xbean.jar
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnroot/mycocktail/!svn/ver/110/trunk/MyCocktail/web/WEB-INF/lib/xbean.jar
+END
+jersey-multipart-1.11.jar
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svnroot/mycocktail/!svn/ver/263/trunk/MyCocktail/web/WEB-INF/lib/jersey-multipart-1.11.jar
+END
+wadl-xmlbeans.jar
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/mycocktail/!svn/ver/124/trunk/MyCocktail/web/WEB-INF/lib/wadl-xmlbeans.jar
+END
+jaxen-1.1.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/mycocktail/!svn/ver/157/trunk/MyCocktail/web/WEB-INF/lib/jaxen-1.1.1.jar
+END
+commons-beanutils-1.8.0.jar
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svnroot/mycocktail/!svn/ver/157/trunk/MyCocktail/web/WEB-INF/lib/commons-beanutils-1.8.0.jar
+END
