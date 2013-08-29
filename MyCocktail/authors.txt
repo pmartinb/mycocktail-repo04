@@ -1,0 +1,14 @@
+Developers:
+  -Main Developers:
+	- Rodrigo Illera Camargo (rodrigo.illera--at--logica.com)
+	- David del Pozo González (david.del.pozo--at--logica.com)
+	  Company: Logica Spain
+
+MyCocktail Project web site:  
+  - http://www.ict-romulus.eu/web/mycocktail
+
+MyCocktail is being developed thanks to contribution of projects:
+  - ICT OMELETTE Project: http://www.ict-omelette.eu
+
+MyCocktail was developed under thanks to contribution of projects:
+  - ICT Romulus Project: http://www.ict-romulus.eu

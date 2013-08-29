@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="MyCocktail" default="compress" basedir=".">
+    <import file="romaframework/roma-module-build.xml"/>
+    
+    <property name="ant.lib"             value="ant-lib" />
+    
+    <property name="project.lib.runtime" value="WebContent/WEB-INF/lib" />
+
+    <property name="distfolder"          value="dist" />
+    <property name="project.src"         value="src"/>
+    <property name="project.web"         value="WebContent" />
+    <property name="project.lib.compile" value="lib" />
+    <property name="project.lib.runtime" value="${project.web}/WEB-INF/lib" />
+    <property name="project.dist"        value="${distfolder}/${ant.project.name}" />
+    <property name="project.build"       value="${project.dist}/WEB-INF/classes" />
+
+    <path id="project.classpath">
+        <pathelement location="${project.build}" />
+        <fileset dir="${project.lib.runtime}" includes="**/*.jar" />
+        <fileset dir="${project.lib.compile}" includes="**/*.jar" />
+    </path>
+    
+    <target name="deploy-dev" description="Copy war to java app server folder" depends="war-dev">
+        <property file="customBuild.properties"/>
+        <copy todir="${j2ee.server.deployFolder}" file="${distfolder}/${ant.project.name}.war" /> 
+    </target>
+    
+    <target name="deploy" description="Copy war to java app server folder" depends="war">
+        <property file="customBuild.properties"/>
+        <copy todir="${j2ee.server.deployFolder}" file="${distfolder}/${ant.project.name}.war" /> 
+    </target>
+
+    <target name="generate" description="Generate the project without javascript compression">
+        <copy todir="${project.dist}/css">
+            <fileset dir="${project.web}/css"/>
+        </copy>
+        <copy todir="${project.dist}/extjs">
+            <fileset dir="${project.web}/extjs" excludes="CHANGES.html docs/** examples/** source/** *.txt" />
+        </copy>
+        <copy todir="${project.dist}/extjs2.2">
+            <fileset dir="${project.web}/extjs2.2" excludes="CHANGES.html docs/** examples/** source/** *.txt air/** build/**" />
+        </copy>
+        <copy todir="${project.dist}/icons/editor">
+            <fileset dir="${project.web}/icons/editor"/>
+        </copy>
+        <copy todir="${project.dist}/icons/mashupbuilder">
+            <fileset dir="${project.web}/icons/mashupbuilder"/>
+        </copy>
+        <copy todir="${project.dist}/images">
+            <fileset dir="${project.web}/images"/>
+        </copy>
+        <copy todir="${project.dist}/js">
+            <fileset dir="${project.web}/js"/>
+        </copy>
+        <copy todir="${project.dist}/fckeditor">
+            <fileset dir="${project.web}/fckeditor" excludes="_* _**/** editor/_source/**"/>
+        </copy>
+        <copy todir="${project.dist}/smile-widgets">
+            <fileset dir="${project.web}/smile-widgets" excludes="*.txt **/*.txt"/>
+        </copy>
+        <copy todir="${project.dist}/swf">
+            <fileset dir="${project.web}/swf"/>
+        </copy>
+        <copy todir="${project.dist}">
+            <fileset dir="${project.web}/">
+                <include name="*.html" />
+                <include name="*.ico" />
+            </fileset>
+        </copy>
+        <copy todir="${project.dist}/META-INF">
+            <fileset dir="${project.web}/META-INF"/>
+        </copy>
+        <copy todir="${project.dist}/WEB-INF">
+            <fileset dir="${project.web}/WEB-INF"/>
+        </copy>
+    </target>
+
+    <target name="compile" depends="generate">
+        <mkdir dir="${project.build}" />
+        <javac destdir="${project.build}" includeantruntime="false">
+            <src path="${project.src}" />
+            <classpath refid="project.classpath" />
+        </javac>
+        <copy todir="${project.build}">
+            <fileset dir="${project.src}">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+
+  <!--<target name="generate" depends="compile" description="Generate the project without javascript compression">
+    <concat destfile="${dist}/js/afrous/afrous-editor-all.js" force="no">
+      <filelist dir="${dist}/js/afrous"
+                files="afrous-config.js,
+                       afrous-core.js,
+                       afrous-package.js,
+                       afrous-editor.js,
+                       afrous-editor-ss-ext.js,
+                       afrous-editor-init.js,
+                       afrous-widget.js"/>
+      <filelist dir="${dist}/js/romulus" files="ie-warning.js"/>
+    </concat>
+    <concat destfile="${dist}/js/romulus/page-editor/romulus-page-editor-all.js" force="no">
+      <filelist dir="${dist}/js/romulus/page-editor/"
+                files="romulus-page-editor.js,
+                       mashup-displayer.js,
+                       fckeditor-events.js"/>
+    </concat>
+  </target>-->
+    <target name="compress" depends="generate" description="Generate the project with javascript compression">
+        <property name="linebreak" value="25000" />
+        <available file="${ant.lib}/YUIAnt.jar" property="YUIANT_AVAILABLE" />
+        <fail unless="YUIANT_AVAILABLE" message="Run jar target to generate the required task"/>
+        <taskdef name="yuicompress" classname="com.yahoo.platform.yui.compressor.YUICompressTask">
+            <classpath>
+                <pathelement path="${ant.lib}/yuicompressor-2.4.jar" />
+                <pathelement path="${ant.lib}/YUIAnt.jar" />
+            </classpath>
+        </taskdef>
+        <yuicompress linebreak="${linebreak}" warn="false" munge="yes" preserveallsemicolons="true"
+            outputfolder="${project.dist}/css">
+            <fileset dir="${project.dist}/css" >
+                <include name="**/*.js" />
+                <include  name="**/*.css" />
+            </fileset>
+        </yuicompress>
+        <yuicompress linebreak="${linebreak}" warn="false" munge="yes" preserveallsemicolons="true"
+            outputfolder="${project.dist}/extjs">
+            <fileset dir="${project.dist}/extjs" >
+                <include name="**/*.js" />
+                <include name="**/*.css" />
+            </fileset>
+        </yuicompress>
+        <yuicompress linebreak="${linebreak}" warn="false" munge="yes" preserveallsemicolons="true"
+            outputfolder="${project.dist}/extjs2.2">
+            <fileset dir="${project.dist}/extjs2.2" >
+                <include name="**/*.js" />
+                <include name="**/*.css" />
+            </fileset>
+        </yuicompress>
+        <yuicompress linebreak="${linebreak}" warn="false" munge="yes" preserveallsemicolons="true"
+            outputfolder="${project.dist}/js">
+            <fileset dir="${project.dist}/js" >
+                <include name="**/*.js" />
+                <include name="**/*.css" />
+            </fileset>
+        </yuicompress>
+        <yuicompress linebreak="${linebreak}" warn="false" munge="yes" preserveallsemicolons="true"
+            outputfolder="${project.dist}/fckeditor">
+            <fileset dir="${project.dist}/fckeditor" >
+                <include name="**/*.js" />
+                <include name="**/*.css" />
+            </fileset>
+        </yuicompress>
+        <yuicompress linebreak="${linebreak}" warn="false" munge="yes" preserveallsemicolons="true"
+            outputfolder="${project.dist}/smile-widgets">
+            <fileset dir="${project.dist}/smile-widgets" >
+                <include name="**/*.js" />
+                <include name="**/*.css" />
+            </fileset>
+        </yuicompress>
+    </target>
+  <!--<target name="generateHTMLFiles">
+    <echo file="${distfolder}/${ant.project.name}/index.html">
+      <![CDATA[
+        <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+        <html>
+          <head>
+            <title>MyCocktail - Romulus Mashup Builder</title>
+            <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+            <link type="text/css" rel="stylesheet" href="./extjs/resources/css/ext-all.css"></link>
+            <link type="text/css" rel="stylesheet" href="./extjs/resources/css/xtheme-aero.css"></link>
+            <link type="text/css" rel="stylesheet" href="./css/afrous-editor.css"></link>
+            <link type="text/css" rel="stylesheet" href="http://www.simile-widgets.org/styles/common.css"></link>
+            <link rel="shortcut icon" href="./images/romulus.ico"></link>
+            <script project.web="http://api.simile-widgets.org/exhibit/2.2.0/exhibit-api.js"></script>
+            <script project.web="http://api.simile-widgets.org/exhibit/2.2.0/extensions/time/time-extension.js" type="text/javascript"></script>
+          </head>
+          <body>
+            <img id="af-xd-dummy" project.web="./extjs/resources/images/aero/s.gif" style="display:none" />
+            <div id="container">
+              <div id="af-header" class="x-layout-inactive-content">
+                <div id="af-header-icon"></div>
+                <div id="af-title"></div>
+                <div id="af-menubar"></div>
+              </div>
+            </div>
+            <script type="text/javascript" project.web="./js/jquery/jquery.js"></script>
+            <script type="text/javascript" project.web="./extjs/adapter/jquery/jquery-plugins.js"></script>
+            <script type="text/javascript" project.web="./extjs/adapter/jquery/ext-jquery-adapter.js"></script>
+            <script type="text/javascript" project.web="./extjs/ext-all.js"></script>
+            <script type="text/javascript" project.web="./js/afrous/afrous-editor-all.js"></script>
+          </body>
+        </html>
+      ]]>
+    </echo>
+    <echo file="${distfolder}/${ant.project.name}/editor.html">
+      <![CDATA[
+        <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+        <html>
+          <head>
+            <title>MyCoctail Page Editor</title>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+            <link type="text/css" rel="stylesheet" href="./extjs2.2/resources/css/ext-all.css"></link>
+            <link type="text/css" rel="stylesheet" href="./css/page-editor.css"></link>
+            <link type="text/css" rel="stylesheet" href="./css/themes.css"></link>
+            <link type="text/css" rel="stylesheet" href='http://www.simile-widgets.org/styles/common.css' />
+            <script project.web="http://api.simile-widgets.org/exhibit/2.2.0/exhibit-api.js"></script>
+            <script project.web="http://api.simile-widgets.org/exhibit/2.2.0/extensions/time/time-extension.js" type="text/javascript"></script>
+          </head>
+          <body>
+            <div id="container">
+              <div id="af-header" class="x-layout-inactive-content">
+                <div id="af-header-icon"></div>
+                <div id="af-title"></div>
+                <div id="af-menubar"></div>
+              </div>
+            </div>
+            <div id="toolBars">
+              <div id="fckEditorToolbar">
+                <div id="xToolbar"></div>
+              </div>
+              <div id="editorToolBar" style="text-align:left;"/>
+            </div>
+            <div id="editor" />
+            <div id="divContainer"/>
+            <div id="layouts" >
+
+            </div>
+            <script type="text/javascript" project.web="./fckeditor/fckeditor.js"></script>
+            <script type="text/javascript" project.web="./js/jquery/jquery-1.2.6.min.js"></script>
+            <script type="text/javascript" project.web="./extjs2.2/adapter/jquery/ext-jquery-adapter.js"></script>
+            <script type="text/javascript" project.web="./extjs2.2/ext-all.js"></script>
+            <script type="text/javascript" project.web="./js/romulus/page-editor/config.js"></script>
+            <script type="text/javascript">
+              document.write('<scr'+'ipt type="text/javascript" project.web="'+afrous.baseURL+'/js/afrous/afrous-core.js"></sc'+'ript>');
+              document.write('<scr'+'ipt type="text/javascript" project.web="'+afrous.baseURL+'/js/afrous/afrous-package.js"></sc'+'ript>');
+            </script>
+            <script type="text/javascript" project.web="./js/romulus/page-editor/romulus-page-editor-all.js"></script>
+          </body>
+        </html>
+      ]]>
+    </echo>
+  </target>-->
+    <target name="war" depends="compile, compress" description="Generate a WAR with the project">
+    <!-- Creation of web.xml -->
+    <!--<concat destfile="${distfolder}/${ant.project.name}/WEB-INF/web.xml">0</concat>
+    <echoxml file="${distfolder}/${ant.project.name}/WEB-INF/web.xml">
+      <web-app version="2.5">
+        <welcome-file-list>
+          <welcome-file>index.html</welcome-file>
+        </welcome-file-list>
+      </web-app>
+    </echoxml>-->
+    <!-- Creation of context.xml -->
+    <!--<concat destfile="${distfolder}/${ant.project.name}/META-INF/context.xml">0</concat>
+    <echoxml file="${distfolder}/${ant.project.name}/META-INF/context.xml">
+      <Context path="${ant.project.name}"/>
+    </echoxml>-->
+    <!-- Making the WAR -->
+        <war destfile="${distfolder}/${ant.project.name}.war" webxml="${distfolder}/${ant.project.name}/WEB-INF/web.xml">
+            <fileset dir="${distfolder}/${ant.project.name}"/>
+            <manifest>
+                <attribute name="Title" value="MyCocktail, Romulus Mashup Builder"/>
+                <attribute name="Author" value="Informática Gesfor"/>
+            </manifest>
+        </war>
+    </target>
+    <target name="war-dev" depends="compile" description="Generate a WAR with the project">
+    <!-- Creation of web.xml -->
+    <!--<concat destfile="${distfolder}/${ant.project.name}/WEB-INF/web.xml">0</concat>
+    <echoxml file="${distfolder}/${ant.project.name}/WEB-INF/web.xml">
+      <web-app version="2.5">
+        <welcome-file-list>
+          <welcome-file>index.html</welcome-file>
+        </welcome-file-list>
+      </web-app>
+    </echoxml>-->
+    <!-- Creation of context.xml -->
+    <!--<concat destfile="${distfolder}/${ant.project.name}/META-INF/context.xml">0</concat>
+    <echoxml file="${distfolder}/${ant.project.name}/META-INF/context.xml">
+      <Context path="${ant.project.name}"/>
+    </echoxml>-->
+    <!-- Making the WAR -->
+        <war destfile="${distfolder}/${ant.project.name}.war" webxml="${distfolder}/${ant.project.name}/WEB-INF/web.xml">
+            <fileset dir="${distfolder}/${ant.project.name}"/>
+            <manifest>
+                <attribute name="Title" value="MyCocktail, Romulus Mashup Builder"/>
+                <attribute name="Author" value="Informática Gesfor"/>
+            </manifest>
+        </war>
+    </target>
+</project>
