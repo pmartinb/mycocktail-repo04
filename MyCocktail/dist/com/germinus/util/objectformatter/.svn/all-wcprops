@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svnroot/mycocktail/!svn/ver/263/trunk/MyCocktail/src/java/com/germinus/util/objectformatter
+END
+MapFormatter.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svnroot/mycocktail/!svn/ver/209/trunk/MyCocktail/src/java/com/germinus/util/objectformatter/MapFormatter.java
+END
+XMLFormatter.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svnroot/mycocktail/!svn/ver/263/trunk/MyCocktail/src/java/com/germinus/util/objectformatter/XMLFormatter.java
+END
+JsonFormatter.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svnroot/mycocktail/!svn/ver/263/trunk/MyCocktail/src/java/com/germinus/util/objectformatter/JsonFormatter.java
+END

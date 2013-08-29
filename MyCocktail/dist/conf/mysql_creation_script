@@ -1,0 +1,7 @@
+CREATE TABLE mashups (
+id int AUTO_INCREMENT not null,
+name varchar(255),
+description varchar(255),
+json TEXT,
+primary key(id) 
+);

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svnroot/mycocktail/!svn/ver/260/trunk/MyCocktail/src/java/com/germinus/mashupbuilder/dao
+END
+DAOException.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svnroot/mycocktail/!svn/ver/152/trunk/MyCocktail/src/java/com/germinus/mashupbuilder/dao/DAOException.java
+END
+DAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/mycocktail/!svn/ver/188/trunk/MyCocktail/src/java/com/germinus/mashupbuilder/dao/DAO.java
+END
+DBUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/mycocktail/!svn/ver/152/trunk/MyCocktail/src/java/com/germinus/mashupbuilder/dao/DBUtils.java
+END

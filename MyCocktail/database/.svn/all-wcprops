@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnroot/mycocktail/!svn/ver/261/trunk/MyCocktail/database
+END
+stop-db.sh
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/mycocktail/!svn/ver/126/trunk/MyCocktail/database/stop-db.sh
+END
+start-db.bat
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svnroot/mycocktail/!svn/ver/126/trunk/MyCocktail/database/start-db.bat
+END
+hsqldb.jar
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnroot/mycocktail/!svn/ver/30/trunk/MyCocktail/database/hsqldb.jar
+END
+start-db.sh
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/mycocktail/!svn/ver/30/trunk/MyCocktail/database/start-db.sh
+END
+sqltool-mycocktail.rc
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svnroot/mycocktail/!svn/ver/30/trunk/MyCocktail/database/sqltool-mycocktail.rc
+END
+stop-db.bat
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svnroot/mycocktail/!svn/ver/126/trunk/MyCocktail/database/stop-db.bat
+END

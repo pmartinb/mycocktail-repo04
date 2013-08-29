@@ -1,0 +1,4 @@
+urlid mycocktail
+url jdbc:hsqldb:hsql://localhost/mycocktail
+username mycocktail
+password 3d2jc7e3e2kj4e1

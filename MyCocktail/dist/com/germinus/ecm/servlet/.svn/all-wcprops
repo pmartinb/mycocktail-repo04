@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/mycocktail/!svn/ver/220/trunk/MyCocktail/src/java/com/germinus/ecm/servlet
+END
+GetRepoListServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svnroot/mycocktail/!svn/ver/157/trunk/MyCocktail/src/java/com/germinus/ecm/servlet/GetRepoListServlet.java
+END
+SearchServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/mycocktail/!svn/ver/220/trunk/MyCocktail/src/java/com/germinus/ecm/servlet/SearchServlet.java
+END
+GetContentStreamServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svnroot/mycocktail/!svn/ver/220/trunk/MyCocktail/src/java/com/germinus/ecm/servlet/GetContentStreamServlet.java
+END
+AddNewRepoServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svnroot/mycocktail/!svn/ver/220/trunk/MyCocktail/src/java/com/germinus/ecm/servlet/AddNewRepoServlet.java
+END

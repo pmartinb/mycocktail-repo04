@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svnroot/mycocktail/!svn/ver/230/trunk/MyCocktail/src/java/com/germinus/mashupbuilder/servlet
+END
+JSONPProxyServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svnroot/mycocktail/!svn/ver/229/trunk/MyCocktail/src/java/com/germinus/mashupbuilder/servlet/JSONPProxyServlet.java
+END
+LibrariesServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svnroot/mycocktail/!svn/ver/152/trunk/MyCocktail/src/java/com/germinus/mashupbuilder/servlet/LibrariesServlet.java
+END
+PageServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svnroot/mycocktail/!svn/ver/230/trunk/MyCocktail/src/java/com/germinus/mashupbuilder/servlet/PageServlet.java
+END
+MashupServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svnroot/mycocktail/!svn/ver/230/trunk/MyCocktail/src/java/com/germinus/mashupbuilder/servlet/MashupServlet.java
+END
+EchoServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svnroot/mycocktail/!svn/ver/152/trunk/MyCocktail/src/java/com/germinus/mashupbuilder/servlet/EchoServlet.java
+END
+ServiceCreatorServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svnroot/mycocktail/!svn/ver/152/trunk/MyCocktail/src/java/com/germinus/mashupbuilder/servlet/ServiceCreatorServlet.java
+END
